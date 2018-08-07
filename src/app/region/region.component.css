@@ -1,0 +1,25 @@
+.container {
+    overflow-x: hidden;
+}
+
+.card {
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    font-family: 'Special Elite', cursive;
+    opacity: 0.7;
+    box-sizing: border-box;
+    box-shadow: 10px 5px 5px rgb(224, 23, 23);
+    height: 80vh;
+}
+
+.card:hover {
+    opacity: 1;
+}
+
+@media screen and (max-width: 1024px) {
+
+    .card  {
+        opacity: 1;
+    }
+
+}

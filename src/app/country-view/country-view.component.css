@@ -1,0 +1,23 @@
+.container-fluid {
+    overflow-x: hidden;
+}
+
+.card {
+    font-family: 'Special Elite', cursive;
+}
+
+.card-body {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.card-img-top {
+    height: 50vh;
+}
+
+@media screen and (max-width: 420px) {
+
+    .card-img-top {
+        height: 30vh;
+    }
+
+}

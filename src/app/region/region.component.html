@@ -1,0 +1,80 @@
+<div class="container d-flex flex-wrap justify-content-around">
+  <a [routerLink]="['/region','asia']" style="cursor: pointer;text-decoration: none;">
+    <div class="card" style="width: 20rem;">
+      <img class="card-img-top" src="assets/Asia.png">
+      <div class="card-body">
+        <h5 class="card-title text-danger font-weight-bold">
+          <i class="fas fa-map-marker-alt mr-2"></i>ASIA</h5>
+        <hr>
+        <p class="card-text text-dark font-italic">Asia is Earth's largest and most populous continent, located primarily in the Eastern and Northern Hemispheres.</p>
+      </div>
+    </div>
+  </a>
+
+  <a [routerLink]="['/region','africa']" style="cursor: pointer;text-decoration: none;">
+    <div class="card bg-dark" style="width: 20rem;">
+      <img class="card-img-top" src="assets/Africa.png">
+      <div class="card-body">
+        <h5 class="card-title text-danger font-weight-bold">
+          <i class="fas fa-map-marker-alt mr-2"></i>AFRICA</h5>
+        <hr>
+        <p class="card-text text-light font-italic">Africa is the world's second largest and second most-populous continent. At about 30.3 million km² including adjacent
+          islands, it covers 6% of Earth's total surface area and 20% of its land area.</p>
+      </div>
+    </div>
+  </a>
+
+  <a [routerLink]="['/region','americas']" style="cursor: pointer;text-decoration: none;">
+    <div class="card" style="width: 20rem;">
+      <img class="card-img-top" src="assets/Americas.png">
+      <div class="card-body">
+        <h5 class="card-title text-danger font-weight-bold">
+          <i class="fas fa-map-marker-alt mr-2"></i>AMERICAS</h5>
+        <hr>
+        <p class="card-text text-dark font-italic">Americas comprise the totality of the continents of North and South America. Together, they make up most of the land
+          in Earth's western hemisphere and comprise the New World.</p>
+      </div>
+    </div>
+  </a>
+
+  <a [routerLink]="['/region','europe']" style="cursor: pointer;text-decoration: none;">
+    <div class="card bg-dark" style="width: 20rem;">
+      <img class="card-img-top" src="assets/Europe.png">
+      <div class="card-body">
+        <h5 class="card-title text-danger font-weight-bold">
+          <i class="fas fa-map-marker-alt mr-2"></i>EUROPE</h5>
+        <hr>
+        <p class="card-text text-light font-italic">Europe is a continent located entirely in the Northern Hemisphere and mostly in the Eastern Hemisphere. It is bordered
+          by the Arctic Ocean to the north, the Atlantic Ocean to the west and the Mediterranean Sea to the south.</p>
+      </div>
+    </div>
+  </a>
+
+  <a [routerLink]="['/region','oceania']" style="cursor: pointer;text-decoration: none;">
+    <div class="card" style="width: 20rem;">
+      <img class="card-img-top" src="assets/Oceania.png">
+      <div class="card-body">
+        <h5 class="card-title text-danger font-weight-bold">
+          <i class="fas fa-map-marker-alt mr-2"></i>OCEANIA</h5>
+        <hr>
+        <p class="card-text text-dark font-italic">Oceania is a geographic region comprising Melanesia, Micronesia, Polynesia and Australasia. Spanning the eastern
+          and western hemispheres, Oceania covers an area of 8,525,989 square kilometres and has a population of 40 million.</p>
+      </div>
+    </div>
+  </a>
+
+  <a [routerLink]="['/region','polar']" style="cursor: pointer;text-decoration: none;">
+    <div class="card bg-dark" style="width: 20rem;">
+      <img class="card-img-top" src="assets/Polar.png">
+      <div class="card-body">
+        <h5 class="card-title text-danger font-weight-bold">
+          <i class="fas fa-map-marker-alt mr-2"></i>POLAR</h5>
+        <hr>
+        <p class="card-text text-light font-italic">The polar regions, also called the frigid zones, of Earth are the regions of the planet that surround its geographical
+          poles, lying within the polar circles.</p>
+      </div>
+    </div>
+  </a>
+</div>
+
+<router-outlet (deactivate)="onDeactivate()"></router-outlet>

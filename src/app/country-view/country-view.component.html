@@ -1,0 +1,105 @@
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" color="#fff" type="line-spin-fade-rotating"></ngx-spinner>
+<div class="container-fluid m-0 p-0" *ngIf="country.length>0">
+      <div class="card border border-dark bg-dark text-light">
+        <img class="card-img-top img-fluid bg-dark" src="{{country[0].flag}}">
+        <div class="card-header text-center font-weight-bold">
+          <h1>{{country[0].name}} ({{country[0].nativeName}})</h1>
+        </div>
+      </div>
+      <div class="card border border-dark">
+        <div class="card-title text-center font-weight-bold mt-3 mb-0">
+          <span *ngFor="let altSpelling of country[0].altSpellings;let first=first;let last=last">{{altSpelling}}{{last ? '' : ' / '}}</span>
+        </div>
+        <div class="card-body text-center">
+          <table class="card-text text-left table table-striped">
+            <tbody>
+              <tr>
+                <th>Capital</th>
+                <td>{{country[0].capital?country[0].capital:'-'}}</td>
+              </tr>
+              <tr *ngIf="country[0].timezones.length!=undefined && country[0].timezones.length>0">
+                <th>Timezones</th>
+                <td>
+                  <span *ngFor="let timezone of country[0].timezones;let first=first;let last=last">{{timezone}}{{last ? '' : ', '}}</span>
+                </td>
+              </tr>
+              <tr *ngIf="country[0].currencies.length!=undefined && country[0].currencies.length>0">
+                <th>Currencies</th>
+                <td>
+                  <span *ngFor="let currency of country[0].currencies;let first=first;let last=last">
+                    <a *ngIf="currency.code" [routerLink]="['/currency',currency.code]" style="cursor: pointer;">{{currency.name}}</a> ({{currency.code}}) ({{currency.symbol}}) {{last ? '' : ', '}}</span>
+                </td>
+              </tr>
+              <tr *ngIf="country[0].languages.length!=undefined && country[0].languages.length>0">
+                <th>Languages</th>
+                <td>
+                  <span *ngFor="let language of country[0].languages;let first=first;let last=last">
+                    <a *ngIf="language.iso639_1" [routerLink]="['/lang',language.iso639_1]" style="cursor: pointer;">{{language.name}}</a> ({{language.nativeName}}) {{last ? '' : ', '}}</span>
+                </td>
+              </tr>
+              <tr>
+                <th>Population</th>
+                <td>{{country[0].population?country[0].population:'-'}}</td>
+              </tr>
+              <tr>
+                <th>Demonym</th>
+                <td>{{country[0].demonym?country[0].demonym:'-'}}</td>
+              </tr>
+              <tr>
+                <th>Gini</th>
+                <td>{{country[0].gini?country[0].gini:'-'}}</td>
+              </tr>
+              <tr *ngIf="country[0].regionalBlocs.length!=undefined && country[0].regionalBlocs.length>0">
+                <th>Regional Blocs</th>
+                <td>
+                  <span *ngFor="let regionalBloc of country[0].regionalBlocs;let first=first;let last=last">{{regionalBloc.acronym}} [{{regionalBloc.name}}] {{last ? '' : ', '}}</span>
+                </td>
+              </tr>
+              <tr>
+                <th>Region</th>
+                <td>{{country[0].region}} [{{country[0].subregion?country[0].subregion:'-'}}]</td>
+              </tr>
+              <tr>
+                <th>Latitude / Longitude</th>
+                <td>{{country[0].latlng[0]?country[0].latlng[0]:'-'}} / {{country[0].latlng[1]?country[0].latlng[1]:'-'}}</td>
+              </tr>
+              <tr>
+                <th>Area</th>
+                <td>{{country[0].area?country[0].area:'-'}} km
+                  <sup>2</sup>
+                </td>
+              </tr>
+              <tr *ngIf="country[0].borders.length!=undefined && country[0].borders.length>0">
+                <th>Borders</th>
+                <td>
+                  <span *ngFor="let border of country[0].borders;let first=first;let last=last">{{border}}{{last ? '' : ', '}}</span>
+                </td>
+              </tr>
+              <tr>
+                <th>Calling Codes</th>
+                <td>+{{country[0].callingCodes[0]}}</td>
+              </tr>
+              <tr>
+                <th>Internet TLD</th>
+                <td>{{country[0].topLevelDomain?country[0].topLevelDomain:'-'}}</td>
+              </tr>
+              <tr>
+                <th>CIOC</th>
+                <td>{{country[0].cioc?country[0].cioc:'-'}}</td>
+              </tr>
+              <tr>
+                <th>Numeric Code</th>
+                <td>{{country[0].numericCode?country[0].numericCode:'-'}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer text-muted text-center">
+          <a [routerLink]="['/home']" class="btn btn-primary mr-5 text-light">
+            <i class="fas fa-home"></i> Go to home</a>
+          <a (click)="goBackToPreviousPage()" class="btn btn-primary text-light">
+            <i class="fas fa-long-arrow-alt-left"></i> Go Back</a>
+        </div>
+  </div>
+</div>
+<router-outlet (deactivate)="onDeactivate()"></router-outlet>

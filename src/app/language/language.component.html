@@ -1,0 +1,71 @@
+<div class="container-fluid">
+  <div class="row searchArea">
+    <div class="col-2 pt-4">
+      <a (click)="goBackToPreviousPage()" style="cursor: pointer;">
+        <i class="fas fa-long-arrow-alt-left"></i>
+      </a>
+    </div>
+    <div class="col-6 mx-0 px-0">
+      <input class="searchBox w-100 p-4 text-light" type="text" placeholder="Search..." [(ngModel)]="searchText" autofocus/>
+    </div>
+    <div class="col-2 pt-4 pl-0 ml-0">
+      <i class="fas fa-search big"></i>
+    </div>
+  </div>
+  <div class="row" *ngIf="languages.length>0">
+    <div *ngFor="let language of languages | filter : searchText" class="col-md-4 mb-4">
+      <div class="card border border-dark">
+        <div class="card-header text-left text-light bg-dark font-weight-bold">
+          <div class="row">
+            <div class="col-9 col-lg-10">
+              <span class=" text-uppercase">{{language.name}}</span>
+              <br>
+              <small>Country in {{language.subregion?language.subregion:language.region}}</small>
+            </div>
+            <div class="col-3 col-lg-2">
+              <a class="btn btn-dark" [routerLink]="['/country',language.name]" data-toggle="tooltip" data-placement="top" title="Click here for Country details">
+                <i class="fas fa-search"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <img class="card-img-top img-fluid img-thumbnail" src="{{language.flag}}">
+        <div class="card-body text-left">
+          <p class="card-text">
+            <small>
+              <b>Capital : </b>{{language.capital?language.capital:'Not available'}}</small>
+          </p>
+          <hr>
+          <p class="card-text">
+            <small>
+              <b>Timezones : </b>
+              <span *ngFor="let timezone of language.timezones;let first=first;let last=last">{{timezone}}{{last ? '' : ', '}}</span>
+            </small>
+          </p>
+          <hr>
+          <p class="card-text" *ngIf="language.currencies.length!=undefined && language.currencies.length>0">
+            <small>
+              <b>Currencies : </b>
+              <span *ngFor="let currency of language.currencies;let first=first;let last=last">
+                <a *ngIf="currency.code" [routerLink]="['/currency',currency.code]" style="cursor: pointer;">{{currency.name}}</a> ({{currency.code}}) {{last ? '' : ', '}}</span>
+            </small>
+          </p>
+          <hr>
+          <p class="card-text" *ngIf="language.languages.length!=undefined && language.languages.length>0">
+            <small>
+              <b>Languages : </b>
+              <span *ngFor="let language of language.languages;let first=first;let last=last">
+                <a *ngIf="language.iso639_1" [routerLink]="['/lang',language.iso639_1]" style="cursor: pointer;">{{language.name}}</a> ({{language.nativeName}}) {{last ? '' : ', '}}</span>
+            </small>
+          </p>
+          <hr>
+          <p class="card-text">
+            <small>
+              <b>Population : </b>{{language.population}}</small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet (deactivate)="onDeactivate()"></router-outlet>
